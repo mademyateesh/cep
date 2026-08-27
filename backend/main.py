@@ -16,6 +16,12 @@ import schemas
 
 app = FastAPI(title="UnifiedGov API", version="0.1.0")
 
+app = FastAPI(title="UnifiedGov API", version="0.1.0")
+
+@app.get("/")
+def root():
+    return {"message": "UnifiedGov API is running"}
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # tighten before production
