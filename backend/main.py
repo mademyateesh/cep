@@ -10,13 +10,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
 from sqlalchemy.orm import Session, joinedload
 
-from database import get_db
-from models import State, Organization, Category, Exam, ScopeEnum
-import schemas
+from .database import get_db
+from .models import State, Organization, Category, Exam, ScopeEnum
+from . import schemas
 
 app = FastAPI(title="UnifiedGov API", version="0.1.0")
 
-app = FastAPI(title="UnifiedGov API", version="0.1.0")
 
 @app.get("/")
 def root():
