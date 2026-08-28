@@ -6,7 +6,7 @@ Run: streamlit run app.py   (with the API running on localhost:8000)
 import requests
 import streamlit as st
 
-API_BASE_URL = "https://cep-h2v8.onrender.com"
+API_BASE = "https://cep-h2v8.onrender.com"
 
 st.set_page_config(page_title="UnifiedGov", page_icon="🏛️", layout="wide")
 
@@ -167,14 +167,23 @@ def status_pill(status: str) -> str:
 # API helpers
 # ---------------------------------------------------------------------
 
+API_BASE = "https://cep-h2v8.onrender.com"
+
 @st.cache_data(ttl=60)
 def api_get(path: str, params: dict | None = None):
     try:
-        r = requests.get(f"{API_BASE}{path}", params=params or {}, timeout=10)
+        r = requests.get(
+            f"{API_BASE}{path}",
+            params=params or {},
+            timeout=10
+        )
         r.raise_for_status()
         return r.json()
+
     except requests.exceptions.RequestException as e:
-        st.error(f"Could not reach the API at {API_BASE}. Is `uvicorn main:app --reload --port 8000` running?\n\n{e}")
+        st.error(
+            f"Could not reach the API at {API_BASE}.\n\n{e}"
+        )
         return []
 
 
