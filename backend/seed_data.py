@@ -12,8 +12,8 @@ Run: python3 seed_data.py   (drops & recreates all tables first)
 """
 from datetime import date, datetime, timedelta
 
-from database import Base, engine, SessionLocal
-from models import State, Organization, Category, Exam, ScopeEnum, StatusEnum
+from backend.database import Base, engine, SessionLocal
+from backend.models import State, Organization, Category, Exam, ScopeEnum, StatusEnum
 
 Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine)
