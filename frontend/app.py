@@ -6,7 +6,7 @@ Run: streamlit run app.py   (with the API running on localhost:8000)
 import requests
 import streamlit as st
 
-API_BASE = "https://cep-h2v8.onrender.com"
+API_BASE = "https://cep-1-jioq.onrender.com"
 
 st.set_page_config(page_title="UnifiedGov", page_icon="🏛️", layout="wide")
 
